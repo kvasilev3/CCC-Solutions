@@ -1,0 +1,9 @@
+# Test cases #
+###################
+*.in
+*.out
+
+# Instructions #
+################
+*.pdf
+
