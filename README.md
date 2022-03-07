@@ -8,7 +8,7 @@ These are solutions to the CCC contest in Python.
 **Official page of the contest:**\
 (https://cemc.uwaterloo.ca/contests/computing.html)
 
-**Past Contests:** \*CCC Past Contests are all the way at the bottom*
+**Past Contests:** (CCC Past Contests are all the way at the bottom)\
 (https://cemc.uwaterloo.ca/contests/past_contests.html)
 
 **DMOJ Online Judge:** \
