@@ -1,8 +1,19 @@
-import subprocess
 import os
+import subprocess
+import time
+
+def rename_files(problem):
+    testsFolder = './junior_data'
+    for inputFilename in sorted(os.listdir("{0}/{1}".format(testsFolder, problem))):
+        if not inputFilename.startswith("{0}.".format(problem)):
+            oldFileName = "{0}/{1}/{2}".format(testsFolder, problem, inputFilename)
+            newFileName = "{0}/{1}/{2}".format(testsFolder, problem, 'j4'+inputFilename[2:])
+            os.rename(oldFileName, newFileName)
+
 
 def test(problem):
     testsFolder = './junior_data'
+    start_time = time.time()
     for inputFilename in sorted(os.listdir("{0}/{1}".format(testsFolder, problem))):
         if inputFilename.startswith("{0}.".format(problem)) and inputFilename.endswith(".in"):
             inputFile = open("{0}/{1}/{2}".format(testsFolder, problem, inputFilename), 'r')
@@ -21,9 +32,14 @@ def test(problem):
                     return
             print('Test {0} passed'.format(inputFilename))
 
+    end_time = time.time()
+    print("Elapsed time: {0} seconds".format(end_time - start_time))
+    print()
+
+
 if __name__ == '__main__':
     test('j1')
     test('j2')
     test('j3')
-    #test('j4')
+    test('j4')
     #test('j5')
