@@ -38,4 +38,4 @@ if __name__ == '__main__':
     test('j2')
     test('j3')
     test('j4')
-    #test('j5')
+    test('j5')
