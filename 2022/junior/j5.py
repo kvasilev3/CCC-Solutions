@@ -28,7 +28,7 @@ def j5_single_tree():
     print(max_square_size)
 
 def j5_small_area():
-    # This solution earns 5 marks
+    # This solution earns 8 marks
     max_square_size = -1
 
     n = int(sys.stdin.readline().strip())
@@ -53,11 +53,19 @@ def j5_small_area():
 
     print(max_square_size)
 
+# This class is used in the solutions below
 class Tree:
     def __init__(self, row, column):
         self.row = row
         self.column = column
 
+# This class is used in the solutions below
+class Point:
+    def __init__(self, row, column):
+        self.row = row
+        self.column = column
+
+# This class is used in the solutions below
 class Area:
     def __init__(self, row1, column1, row2, column2):
         self.row1 = min(row1, row2)
@@ -124,7 +132,49 @@ def j5_recursive():
     max_square_size = process_area(area, trees, 0)
     print(max_square_size)
 
+def j5():
+    # This solution earns 15 marks
+    n = int(sys.stdin.readline().strip())
+    
+    t = int(sys.stdin.readline().strip())
+    trees = list()
+    # Add a fake tree that is just at the top-left corner of the area
+    # Remember that the area coordinate system starts at 1,1, Thus, this
+    # fake tree is outside of the area.
+    trees.append(Tree(0, 0))
+    for i in range(t):
+        pair = sys.stdin.readline().strip().split(' ')
+        r = int(pair[0])
+        c = int(pair[1])
+        trees.append(Tree(r, c))
+
+    trees_len = len(trees)
+    max_square_size = -1
+    for i in range(trees_len):
+        for j in range(trees_len):
+            current_square_top_left_corner = Point(trees[i].row+1, trees[j].column+1)
+            current_squre_size = min(n - current_square_top_left_corner.row + 1, n - current_square_top_left_corner.column + 1)
+            # Go through all trees and calculate what is the maximum square 
+            # that can be drawn from that top left corner
+            for k in range(trees_len):
+                if k == i or k == j:
+                    continue # Ignore the 2 trees that were used as a start of the current square
+                delta_rows = trees[k].row - current_square_top_left_corner.row
+                if delta_rows < 0:
+                    continue # This tree is outside of the current square
+                delta_columns = trees[k].column - current_square_top_left_corner.column
+                if delta_columns < 0:
+                    continue # This tree is outside of the current square
+                max_possible_square_size = max(delta_rows, delta_columns)
+                if current_squre_size > max_possible_square_size:
+                    current_squre_size = max_possible_square_size
+            if max_square_size < current_squre_size:
+                max_square_size = current_squre_size
+
+    print(max_square_size)
+
 if __name__ == '__main__':
     #j5_single_tree()
     #j5_small_area()
-    j5_recursive()
+    #j5_recursive()
+    j5()
