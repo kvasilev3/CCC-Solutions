@@ -1,7 +1,7 @@
 # Canadian Computing Competition (CCC) SOLUTIONS
 
 # Info
-These are solutions to the CCC contest in Python.
+These are solutions to the CCC contest in Python. Years 2021, 2022.
 
 ## Links/References
 
