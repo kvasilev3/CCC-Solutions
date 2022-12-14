@@ -3,7 +3,7 @@ import subprocess
 import time
 
 def test(problem):
-    tests_folder = './junior_data'
+    tests_folder = '../junior_data'
     tests_subfolders = {'j1':'j1', 'j2':'j2', 'j3':'j3', 'j4':'s2j4', 'j5':'j5', }
     tests_prefixes = {'j1':'j1', 'j2':'j2', 'j3':'j3', 'j4':'s2', 'j5':'j5', }
 

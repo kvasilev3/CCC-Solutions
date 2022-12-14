@@ -2,7 +2,7 @@ import subprocess
 import os
 
 def test(problem):
-    testsFolder = './junior_data'
+    testsFolder = '../junior_data'
     for inputFilename in sorted(os.listdir("{0}/{1}".format(testsFolder, problem))):
         if inputFilename.startswith("{0}.".format(problem)) and inputFilename.endswith(".in"):
             inputFile = open("{0}/{1}/{2}".format(testsFolder, problem, inputFilename), 'r')
